@@ -10,12 +10,5 @@ Page({
       url: '../posts/post',
     });
   },
-  onUnload:function(){
-
-  },
-
-  onHide:function(){
-
-  }
 
 })
