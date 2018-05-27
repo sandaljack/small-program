@@ -12,20 +12,31 @@ Page({
    */
   onLoad: function (options) {
     //假设数据是从服务器那拉取的
-    var post_content1={
-      date:"Sep 18 2016",
-      title:"正是虾肥蟹壮时",
-      content:"徐文长曾挥毫写下:“金秋菊黄蟹正肥 持螯饮酒滋筋髓。”意指秋意渐浓之际,也是食蟹的最佳时节。",
-      view_num:"112",
-      collect_num:"96",
-      img:{
+    var post_contents = [
+      {
+        date: "Sep 18 2016",
+        title: "正是虾肥蟹壮时",
+        content: "徐文长曾挥毫写下:“金秋菊黄蟹正肥 持螯饮酒滋筋髓。”意指秋意渐浓之际,也是食蟹的最佳时节。",
+        view_num: "112",
+        collect_num: "96",
         author_img: "/images/avatar/1.png",
-        post_img: "/images/post/crab.png",        
+        post_img: "/images/post/crab.png",
       },
-      img_condition:true,
-     
-    }
-    this.setData(post_content1);
+      {
+        date: "Nov 25 2016",
+        title: "比利·林恩的中场故事",
+        content: "李安是一位绝不会重复自己的导演，本片极富原创性<<比利林恩漫长的中场故事>>。",
+        view_num: "112",
+        collect_num: "96",
+        author_img: "/images/avatar/2.png",
+        post_img: "/images/post/bl.png",
+      }
+
+    ];
+    
+    this.setData({
+      post_key:post_contents
+    });
   },
 
   /**

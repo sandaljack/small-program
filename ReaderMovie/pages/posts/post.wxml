@@ -1,25 +1,25 @@
 <view>
    <!--轮播图swiper组件  -->
-   <!--布尔值最好加{{}}  -->
-  <swiper vertical="{{false}}" indicator-dots="true" autoplay="true" interval='5000'>
+  <swiper  indicator-dots="true" autoplay="true" interval='5000'>
       <swiper-item><image src="/images/post/xiaolong.jpg" ></image></swiper-item>
       <swiper-item><image src="/images/post/vr.png" ></image></swiper-item>
-      <swiper-item><image src="/images/post/bl.png" ></image></swiper-item>    
+      <swiper-item><image src="/images/post/sls.JPG" ></image></swiper-item>    
   </swiper>
-  <view class='post-container'> 
-      <view class="post-author-date">
-      <!--wx:if="{{false}}" 就不会显示出来  -->
-          <image wx:if="{{img_condition}}" class="post-author" src="{{img.author_img}}"></image>
-          <text class="post-date">{{date}}</text>
-      </view>
-      <text class="post-title">{{title}}</text>
-      <image class="post-image" src="{{img.post_img}}"></image>
-      <text class="post-content">{{content}}</text>
-      <view class="post-like">
-          <image class="post-like-image" src="/images/icon/chat.png"></image>
-          <text class="post-like-font">{{collect_num}}</text>
-          <image class="post-like-image" src="/images/icon/view.png"></image>
-          <text class="post-like-font">{{view_num}}</text>
-      </view>
-  </view>
+  <block wx:for="{{post_key}}" wx:for-item="item" wx:for-index="index">
+      <view class='post-container'> 
+        <view class="post-author-date">
+            <image  class="post-author" src="{{item.author_img}}"></image>
+            <text class="post-date">{{item.date}}</text>
+        </view>
+        <text class="post-title">{{item.title}}</text>
+        <image class="post-image" src="{{item.post_img}}"></image>
+        <text class="post-content">{{item.content}}</text>
+        <view class="post-like">
+            <image class="post-like-image" src="/images/icon/chat.png"></image>
+            <text class="post-like-font">{{item.collect_num}}</text>
+            <image class="post-like-image" src="/images/icon/view.png"></image>
+            <text class="post-like-font">{{item.view_num}}</text>
+        </view>
+    </view>
+  </block>
 </view>
