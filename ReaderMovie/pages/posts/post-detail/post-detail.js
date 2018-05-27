@@ -12,5 +12,20 @@ Page({
     this.setData({
       postData:postData
     })
+
+    // 设置缓存
+    wx.setStorageSync('key', {game:'LOL',developer:'风暴英雄'})
+  },
+  onCollectionTap: function (event) {
+    // 获得缓存
+    var game = wx.getStorageSync('key');
+    console.log(game);
+  },
+  onShareTap:function(event) {
+    // 清除指定缓存
+    //缓存的上限最大不能超过10MB
+    wx.removeStorageSync('key');
+    // 清除所有缓存
+    // wx.clearStorageSync();
   }
 })
