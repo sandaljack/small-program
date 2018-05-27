@@ -7,17 +7,17 @@
   </swiper>
   <view class='post-container'> 
       <view class="post-author-date">
-          <image class="post-author" src="/images/avatar/1.png"></image>
-          <text class="post-date">Nov 25 2016</text>
+          <image class="post-author" src="{{author_img}}"></image>
+          <text class="post-date">{{date}}</text>
       </view>
-      <text class="post-title">正是虾肥蟹壮时</text>
-      <image class="post-image" src="/images/post/crab.png"></image>
-      <text class="post-content">徐文长曾挥毫写下:“金秋菊黄蟹正肥 持螯饮酒滋筋髓。”意指秋意渐浓之际,也是食蟹的最佳时节。</text>
+      <text class="post-title">{{title}}</text>
+      <image class="post-image" src="{{post_img}}"></image>
+      <text class="post-content">{{content}}</text>
       <view class="post-like">
           <image class="post-like-image" src="/images/icon/chat.png"></image>
-          <text class="post-like-font">92</text>
+          <text class="post-like-font">{{collect_num}}</text>
           <image class="post-like-image" src="/images/icon/view.png"></image>
-          <text class="post-like-font">65</text>
+          <text class="post-like-font">{{view_num}}</text>
       </view>
   </view>
 </view>
