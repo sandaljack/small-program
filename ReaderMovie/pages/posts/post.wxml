@@ -8,6 +8,9 @@
   </swiper>
   <block wx:for="{{post_key}}" wx:for-item="item" wx:for-index="index">
      <!--template模版引入  多页面复用  -->
-     <template is="postItem" data="{{item}}"/>
+     <!--套用view 绑定点击事件  data-postId获取id  -->
+     <view catchtap="onPostTap" data-postId="{{item.postId}}">
+        <template is="postItem" data="{{item}}" />
+     </view>
   </block>
 </view>
