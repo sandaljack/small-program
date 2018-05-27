@@ -15,11 +15,15 @@ Page({
     var post_content1={
       date:"Sep 18 2016",
       title:"正是虾肥蟹壮时",
-      post_img:"/images/post/crab.png",
       content:"徐文长曾挥毫写下:“金秋菊黄蟹正肥 持螯饮酒滋筋髓。”意指秋意渐浓之际,也是食蟹的最佳时节。",
       view_num:"112",
       collect_num:"96",
-      author_img:"/images/avatar/1.png",
+      img:{
+        author_img: "/images/avatar/1.png",
+        post_img: "/images/post/crab.png",        
+      },
+      img_condition:true,
+     
     }
     this.setData(post_content1);
   },
