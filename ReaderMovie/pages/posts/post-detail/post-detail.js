@@ -32,6 +32,30 @@ Page({
     
   },
   onCollectTap:function(event){
+    //同步，优先使用
+    this.getPostsCollectedSyc();
+    //异步
+    // this.getPostsCollectedAsy();    
+  },
+
+  //异步收藏方法
+  getPostsCollectedAsy:function(){
+    var that = this;
+    wx.getStorage({
+      key: "posts_collected",
+      success: function (res) {
+        var postsCollected = wx.getStorageSync('posts_collected');
+        var postCollected = postsCollected[that.data.currentPostId];
+        // 收藏变成未收藏，未收藏变成收藏
+        postCollected = !postCollected;
+        postsCollected[that.data.currentPostId] = postCollected;
+        that.showToast(postsCollected, postCollected);
+      },
+    })
+  },
+
+  //同步收藏方法
+  getPostsCollectedSyc:function() {
     var postsCollected = wx.getStorageSync('posts_collected');
     var postCollected = postsCollected[this.data.currentPostId];
     // 收藏变成未收藏，未收藏变成收藏
@@ -39,6 +63,7 @@ Page({
     postsCollected[this.data.currentPostId] = postCollected;
     this.showToast(postsCollected, postCollected);
   },
+
   // 自定义收藏交互反馈函数
   showModal: function (postsCollected, postCollected){
     var that = this;
