@@ -125,5 +125,28 @@ Page({
         })
       }
     })
-  }
+  },
+
+  //音乐播放
+  onMusicTap:function(event){
+    var currentPostId = this.data.currentPostId;
+    var isPlayingMusic = this.data.isPlayingMusic;
+    if (isPlayingMusic) {
+      wx.pauseBackgroundAudio();
+      this.setData({
+        isPlayingMusic:false
+      });     
+    } else {
+      wx.playBackgroundAudio({
+        dataUrl: postsData.postList[currentPostId].music.url,
+        title: postsData.postList[currentPostId].music.title,
+        coverImgUrl: postsData.postList[currentPostId].music.coverImg
+      })
+      this.setData({
+        isPlayingMusic: true
+      }); 
+    }
+  },
+
+
 })
