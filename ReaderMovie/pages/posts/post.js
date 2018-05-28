@@ -23,10 +23,30 @@ Page({
     });
   },
 
+  // 给文章跳转详情页面
   onPostTap:function(event){
     var postId = event.currentTarget.dataset.postid;
     wx.navigateTo({
       url: 'post-detail/post-detail?id=' + postId,
     })
-  }
+  },
+
+  // 给每个轮播图点击跳转详情页
+  // onSwiperItemTap:function(event){
+  //   var postId = event.currentTarget.dataset.postid;
+  //   wx.navigateTo({
+  //     url: 'post-detail/post-detail?id=' + postId,
+  //   })
+  // },
+
+  //给轮播图最上层点击跳转详情页
+  onSwiperTap:function(event){
+    //target和currentTarget区别
+    //target指的是当前点击的组件,指image
+    //currentTarget指的是事件捕获的组件，指swiper
+    var postId = event.target.dataset.postid;
+    wx.navigateTo({
+      url: 'post-detail/post-detail?id=' + postId,
+    })
+  },
 })
