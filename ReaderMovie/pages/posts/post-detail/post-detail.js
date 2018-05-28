@@ -1,10 +1,15 @@
+// 引用数据文件
 var postsData = require("../../../data/posts-data.js");
+// 引用全局属性app.js里面的
+var  app = getApp();
 
 Page({
   data:{
 
   },
   onLoad:function(option){
+    //全局变量
+    var globalData = app.globalData;
     var postId = option.id;
     this.data.currentPostId = postId;
     var postData = postsData.postList[postId];
@@ -30,7 +35,36 @@ Page({
       wx.setStorageSync('posts_collected', postsCollected);
     }
     
+    //判断音乐全局变量
+    if (app.globalData.g_isPlayingMusic && app.globalData.g_currentMusicPostId === postId) {
+      this.setData({
+        isPlayingMusic:true
+      });
+    }
+    //监听音乐状态设置
+    this.setMusicMonitor();
   },
+
+  setMusicMonitor:function(){
+    //监听音乐播放
+    var that = this;
+    wx.onBackgroundAudioPlay(function () {
+      that.setData({
+        isPlayingMusic: true
+      })
+      app.globalData.g_isPlayingMusic = true;
+      app.globalData.g_currentMusicPostId = that.currentPostId;
+    })
+    //监听音乐暂停
+    wx.onBackgroundAudioPause(function () {
+      that.setData({
+        isPlayingMusic: false
+      })
+      app.globalData.g_isPlayingMusic = false;
+      app.globalData.g_currentMusicPostId = null;
+    })
+  },
+
   onCollectTap:function(event){
     //同步，优先使用
     this.getPostsCollectedSyc();
