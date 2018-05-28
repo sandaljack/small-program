@@ -43,5 +43,12 @@ Page({
     this.setData({
       collected:postCollected
     })
+
+    // 交互反馈
+    wx.showToast({
+      title: postCollected?"收藏成功":"取消收藏",
+      duration:1000,
+      icon:'success'
+    })
   },
 })
